@@ -17,6 +17,16 @@ function validateEmail(email: string) {
   }
 }
 
+function validateLettersOnly(text: string) {
+  const result = /^[a-zA-Z ]+$/.test(text);
+
+  if (!result) {
+    return 'Your input should consist of alphabet letters only.';
+  } else {
+    return true;
+  }
+}
+
 /**
  * @todo Handle request error on the UI (consider using a toast)
  */
@@ -71,7 +81,10 @@ const Form = function (): JSX.Element {
         <label>First name</label>
         <input
           type="text"
-          {...register('firstname', { required: 'This is required.' })}
+          {...register('firstname', {
+            required: 'This is required.',
+            validate: { lettersOnly: validateLettersOnly },
+          })}
         />
         {errors.firstname && (
           <div className={styles.error}>*{errors.firstname.message}</div>
@@ -82,7 +95,10 @@ const Form = function (): JSX.Element {
         <label>Last name</label>
         <input
           type="text"
-          {...register('lastname', { required: 'This is required.' })}
+          {...register('lastname', {
+            required: 'This is required.',
+            validate: { lettersOnly: validateLettersOnly },
+          })}
         />
         {errors.lastname && (
           <div className={styles.error}>*{errors.lastname.message}</div>
@@ -93,7 +109,10 @@ const Form = function (): JSX.Element {
         <label>Job role</label>
         <input
           type="text"
-          {...register('role', { required: 'This is required.' })}
+          {...register('role', {
+            required: 'This is required.',
+            validate: { lettersOnly: validateLettersOnly },
+          })}
         />
         {errors.role && (
           <div className={styles.error}>*{errors.role.message}</div>
@@ -104,7 +123,10 @@ const Form = function (): JSX.Element {
         <label>Company</label>
         <input
           type="text"
-          {...register('company', { required: 'This is required.' })}
+          {...register('company', {
+            required: 'This is required.',
+            validate: { lettersOnly: validateLettersOnly },
+          })}
         />
         {errors.company && (
           <div className={styles.error}>*{errors.company.message}</div>
@@ -124,7 +146,10 @@ const Form = function (): JSX.Element {
 
         <div className={styles.radio}>
           <input
-            {...register('airblocks', { required: 'This is required.' })}
+            {...register('airblocks', {
+              required: 'This is required.',
+              validate: { lettersOnly: validateLettersOnly },
+            })}
             type="radio"
             value="Nope"
           />
