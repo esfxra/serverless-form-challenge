@@ -90,7 +90,7 @@ const Form = function (): JSX.Element {
       </div>
 
       <div className={styles.field}>
-        <label>Role</label>
+        <label>Job role</label>
         <input
           type="text"
           {...register('role', { required: 'This is required.' })}
@@ -111,7 +111,7 @@ const Form = function (): JSX.Element {
         )}
       </div>
 
-      <label>Do you own Airblocks?</label>
+      <label>Do you own AirBlocks?</label>
       <div className={styles['field-radius']}>
         <div className={styles.radio}>
           <input
@@ -137,7 +137,7 @@ const Form = function (): JSX.Element {
             type="radio"
             value="Interested"
           />
-          <label>Interested</label>
+          <label>Not yet, but I'd like to learn more</label>
         </div>
         {errors.airblocks && (
           <div className={styles.error}>*{errors.airblocks.message}</div>
@@ -145,7 +145,7 @@ const Form = function (): JSX.Element {
       </div>
 
       <button type="submit" className={styles.button}>
-        Register to Wayru Conf
+        Register for Wayru Conf
       </button>
     </form>
   );

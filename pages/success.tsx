@@ -1,12 +1,11 @@
-import type { NextPage } from 'next';
+import type { NextPageWithLayout } from '../types';
 
 import Layout from '../components/Layout';
-
 import styles from '../page_styles/success.module.scss';
 
-const Success: NextPage = function () {
+const Success: NextPageWithLayout = function () {
   return (
-    <Layout title="Success - Wayru Conf 2022">
+    <>
       <h1 className={styles.title}>
         Great news! You are registered to attend Wayru Conf 2022.
       </h1>
@@ -18,8 +17,12 @@ const Success: NextPage = function () {
         Thank you for the interest in our products, and for being part of our
         fantastic community.
       </p>
-    </Layout>
+    </>
   );
+};
+
+Success.getLayout = function getLayout(page: React.ReactNode) {
+  return <Layout title="Success - Wayru Conf 2022">{page}</Layout>;
 };
 
 export default Success;

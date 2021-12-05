@@ -1,13 +1,13 @@
-import type { NextPage } from 'next';
+import type { NextPageWithLayout } from '../types';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import Layout from '../components/Layout';
 import styles from '../page_styles/index.module.scss';
 
-const Home: NextPage = function () {
+const Home: NextPageWithLayout = function () {
   return (
-    <Layout title="Wayru Conf 2022">
+    <>
       <Image
         src="/wayru_iso_white.png"
         alt="Wayru logo icon"
@@ -24,8 +24,12 @@ const Home: NextPage = function () {
       <Link href="/register">
         <a className={styles.register}>Register</a>
       </Link>
-    </Layout>
+    </>
   );
+};
+
+Home.getLayout = function getLayout(page: React.ReactNode) {
+  return <Layout title="Wayru Conf 2022">{page}</Layout>;
 };
 
 export default Home;

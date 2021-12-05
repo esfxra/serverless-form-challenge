@@ -1,3 +1,5 @@
+import type { NextPage } from 'next';
+
 export type AttendeeData = {
   email: string;
   firstname: string;
@@ -16,4 +18,8 @@ export type AttendeeEmail = {
 export type HostEmail = {
   ticketId: string;
   attendee: AttendeeData;
+};
+
+export type NextPageWithLayout = NextPage & {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
 };
