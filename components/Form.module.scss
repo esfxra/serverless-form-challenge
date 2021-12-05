@@ -1,0 +1,70 @@
+@import '../page_styles/theme.scss';
+
+.form {
+  width: 100%;
+  max-width: 400px;
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: $foreground;
+  }
+}
+
+.field {
+  display: block;
+  margin-bottom: 20px;
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    -webkit-appearance: none;
+    appearance: none;
+    color: $foreground;
+    background-color: transparent;
+  }
+}
+
+.field-radius {
+  display: block;
+}
+
+.radio {
+  margin-bottom: 20px;
+
+  label {
+    display: inline;
+    font-weight: normal;
+  }
+
+  input {
+    display: inline;
+  }
+}
+
+.button {
+  width: 100%;
+  font-size: 18px;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border-width: 0;
+  color: $foreground;
+  background-color: $primary;
+  cursor: pointer;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.error {
+  margin-top: 5px;
+  font-weight: 500;
+  color: $primary
+}
