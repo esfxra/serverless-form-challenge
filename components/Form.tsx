@@ -137,7 +137,7 @@ const Form = function (): JSX.Element {
             type="radio"
             value="Interested"
           />
-          <label>Not yet, but I'd like to learn more</label>
+          <label>Not yet, but I&apos;d like to learn more</label>
         </div>
         {errors.airblocks && (
           <div className={styles.error}>*{errors.airblocks.message}</div>
