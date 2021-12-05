@@ -12,18 +12,28 @@ sendgrid.setApiKey(process.env.SENDGRID_KEY);
 /**
  * This function sends an email to the user that registered for the event.
  */
-async function sendEmailToAttendee({ to, ticketId, firstname }: AttendeeEmail) {
+async function sendEmailToAttendee({ ticketId, attendee }: AttendeeEmail) {
   const html = `
   <div>
-    <p>Hi ${firstname},</p>
+    <p>Hi ${attendee.firstname},</p>
     <p>Thank you for signing up for the event.</p>
     <p>Here is your ticket id: ${ticketId}</p>
+    <br />
+    <p>And here is a copy of the information you filled in:</p>
+    <ul>
+      <li>Email: ${attendee.email}</li>
+      <li>First name: ${attendee.firstname}</li>
+      <li>Last name: ${attendee.lastname}</li>
+      <li>Role: ${attendee.role}</li>
+      <li>Company: ${attendee.company}</li>
+      <li>Owns Airblocks?: ${attendee.airblocks}</li>
+    </ul>
     <br />
     <p>See you then. Cheers!</p>
   </div>`;
 
   return await sendgrid.send({
-    to,
+    to: attendee.email,
     from: process.env.FROM_EMAIL,
     subject: 'Your conference ticket',
     html,
@@ -65,9 +75,8 @@ async function handler(req: CustomRequest, res: NextApiResponse) {
 
     // Prepare data for confirmation email
     const attendeeEmailData = {
-      to: req.body.email,
       ticketId,
-      firstname: req.body.firstname,
+      attendee: req.body,
     };
 
     // Prepare data for notification email to host.

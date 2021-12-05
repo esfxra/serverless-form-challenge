@@ -10,9 +10,8 @@ export type AttendeeData = {
 };
 
 export type AttendeeEmail = {
-  to: string;
   ticketId: string;
-  firstname: string;
+  attendee: AttendeeData;
 };
 
 export type HostEmail = {
